@@ -54,8 +54,11 @@ for _ in range(threads):
 	t.start()
 	ts.append(t)
 
-for t in ts:
-	t.join()
+try:
+	for t in ts:
+		t.join()
+except KeyboardInterrupt:
+	pass
 
 pbar.close()
 
@@ -64,3 +67,5 @@ print("Done!")
 content = json.dumps(titles, indent = 4)
 
 open(sys.argv[2], "w").write(content)
+
+sys.exit(0)
