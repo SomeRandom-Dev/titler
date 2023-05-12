@@ -39,7 +39,9 @@ def worker():
 			title = re.findall(regex, r.text)
 			if title != [] and title != None:
 				title = title[0]
-				titles.append({"domain": domain, "title": title})
+			else:
+				title = ""
+			titles.append({"domain": domain, "title": title})
 		except:
 			pass
 
